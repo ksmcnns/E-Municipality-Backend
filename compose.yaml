@@ -1,0 +1,26 @@
+version: "1.0"
+
+services:
+  #POSTGRES DB SERVER
+  postgres_db:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: e_municipality
+      PGDATA: /data/postgres
+    volumes:
+      - postgres_data:/data/postgres
+    ports:
+      - "6000:5432"
+    restart: always
+    networks:
+      - postgres
+
+networks:
+  postgres:
+    driver: bridge
+volumes:
+  postgres_data:
+  pgadmin:
